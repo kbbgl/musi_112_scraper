@@ -9,7 +9,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "node-html-parser": "^1.1.16",
     "puppeteer": "^1.19.0"
   }
 }

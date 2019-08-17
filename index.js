@@ -1,4 +1,3 @@
-const HTMLParser = require('node-html-parser');
 const puppeteer = require('puppeteer');
 
 // 23 lectures
@@ -15,7 +14,7 @@ for(i = 1; i < 24; i++){
 
     const page = await browser.newPage();
 
-    await page.goto("https:oyc.yale.edu/music/musi-112/lecture-23");
+    await page.goto("https://oyc.yale.edu/music/musi-112/lecture-23");
     
     // open transcript modal
     await page.click(".cboxElement");
@@ -29,22 +28,14 @@ for(i = 1; i < 24; i++){
 
         var i;
         for (i = 0; i < transcriptElements.length; i++) {
-            arr.push(transcriptElements[i].innerText);
+            var obj = {};
+            obj.tag = transcriptElements[i].tagName;
+            obj.text = transcriptElements[i].innerText;
+            arr.push(obj);
         }
-        // console.log(`Found ${transcriptElements[1].innerText}`);
-        //  return transcriptElements.item(1).innerText;
-
         return arr;
    }) 
 
    console.log(result[1]);
-
-//    result.forEach((element) => {
-//        console.log(element);
-//    })
-    
-
-    // });
-    // page.waitForNavigation();   
     browser.close();
 })()
